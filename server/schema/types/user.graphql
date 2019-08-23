@@ -1,0 +1,10 @@
+type User @cacheControl(maxAge: 60) {
+    id: Int
+    username: String @auth
+    age: Int
+    token: Token
+}
+
+type Query {
+    user: User
+}

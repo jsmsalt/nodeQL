@@ -1,0 +1,9 @@
+type Token {
+    token: String
+    expire: Int
+    user: User
+}
+
+type Query {
+    token: Token
+}

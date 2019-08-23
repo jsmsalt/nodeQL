@@ -1,0 +1,43 @@
+version: "2"
+
+services:
+  node:
+    image: node:8-alpine
+    container_name: web-node
+    user: node
+    working_dir: /home/node/server
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./server:/home/node/server
+      - ./client:/home/node/client
+      - ./certs:/home/node/certs
+    ports:
+      - 3333:3333
+    command: ["yarn", "start"]
+    networks:
+      - backend
+    restart: always
+  mongo:
+    image: mongo:3.4
+    container_name: web-mongo
+    volumes:
+      - ./docker/mongodb:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - backend
+    restart: always
+  redis:
+    image: redis:5-alpine
+    container_name: web-redis
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - ./docker/redis:/data
+    networks:
+      - backend
+    restart: always
+
+networks:
+  backend:
+    driver: bridge

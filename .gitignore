@@ -1,0 +1,5 @@
+*.dia
+*.log
+
+/docker
+/certs
