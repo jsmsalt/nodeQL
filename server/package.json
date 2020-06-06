@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "apicache": "^1.4.0",
-    "apollo-server-express": "^2.8.1",
+    "apollo-server-express": "^2.14.2",
     "apollo-server-redis": "^0.1.0-rc.11",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
